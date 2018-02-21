@@ -1,0 +1,350 @@
+﻿// DOCS PAGE / STANDARD: TOPNAV TOOLBAR FIXED
+$item-sector-color:#607B88;
+.app-toolbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    /*padding: 0 16px 0 0;*/
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.30);
+    background-color: $primary-color;
+    color: $white;
+
+    &.mat-toolbar-single-row {
+        height: $header-height-single;
+    }
+    &.mat-toolbar-multiple-rows {
+        min-height: unset;
+    }
+
+    .mat-toolbar-row, 
+    .mat-toolbar-single-row {
+        display: block;
+        box-sizing: border-box;
+        padding: 0;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        white-space: nowrap;
+    }     
+          
+    mat-icon {
+        color: $white;
+    }
+    
+    .mat-toolbar-row {
+        height: $header-height;
+        line-height: $header-height;
+    }
+    .mat-toolbar-row.toggle-search-box {
+        transition: height 0.2s ease-in-out;
+        -webkit-transition: height 0.2s ease-in-out;
+        -moz-transition: height 0.2s ease-in-out;
+        overflow-y: hidden;
+    }
+    .mat-toolbar-row.toggle-search-box.invisible {
+        height: 0px;
+    }
+
+
+    a.nav-link {
+        font-size: 120%;
+        font-weight: 400;
+        color: $white;
+        display: inline-block;
+    }
+
+    .mat-button {
+        height: 100%;
+    }
+    .mat-button.button-menu .material-icons {
+        transition: transform 150ms ease;
+        &.expand {
+            -moz-transform: rotate(-180deg);
+            -webkit-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+    }
+
+    .nav-toggle.mat-button {
+        height: auto;
+        min-width: unset;
+        font-size: 110%;
+    }
+
+    a.nav-link:hover {
+        text-decoration: unset;
+    }
+
+    .fill-remaining-space {
+        // This fills the remaining space, by using flexbox. 
+        // Every toolbar row uses a flexbox row layout.
+        flex: 1 1 auto;
+    }
+    
+    .arp-top-menu {
+        height: 100%;
+    }
+}
+
+.country-item {
+    display:block; 
+    padding-left: 5px;
+    /* word-wrap:break-word;   */
+}
+ 
+.country-flag {
+    height:14px;
+}
+
+
+.drop-down-icon {
+    padding-bottom: 3px;
+    padding-left: 2px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.drop-up-icon {
+    margin-bottom: -10px;
+    padding-left: 1px;
+    font-size: 1.5em;
+}
+
+.panelup-header .grid {
+    padding-left: 20px; /* grid-space to left */
+    padding-right: 0; /* grid-space to right: (grid-space-left - column-space) e.g. 20px-20px=0 */
+    max-width: 767px;
+
+    .content {
+        min-height: 25px;
+    }
+}
+
+.mat-menu-panel.float-header-menu {
+  max-width: unset;
+}
+
+//css for  Sector menu tab in mobile device
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #1976d2;
+    width: 50%;
+}
+.mat-tab-label {       
+    min-width: 50% !important;
+    height: 40px !important;
+    border-bottom: 1px solid $item-sector-color !important;    
+}
+
+.mat-tab-label:focus {
+    outline: 0;
+    color: $white-color !important;
+    background: $primary-color !important;   
+}
+
+.sidenav-container {
+    margin-top: 0px !important;
+}
+
+.sidenav-button-close {
+    height: 40px;
+    font-size: 20px;   
+    padding: 2% 94%;
+    border-bottom: 1px solid $item-sector-color;
+}
+.sidenav-label-tilte {  
+    border-bottom: 1px solid $item-sector-color;
+    vertical-align: middle;
+    line-height: 30px;    
+    padding-left: 16px;
+}
+
+.flag-container {
+    width: 20%;
+    float: left;
+}
+.flag-img {
+    height: 12px;
+}
+.country-title {
+    float: left;  
+    font-size: 13px;
+    padding: 0px 6px;
+    width: 80% !important;
+
+}
+.p-l-0{
+    padding-left: 0px !important;
+}
+.align-right {
+    float: right;
+}
+
+.button-menu {
+   margin-left: 5% !important;
+}
+
+.mobile-search-panel {
+    position: relative !important;
+    top: 73%;
+    height: 32px;
+    width: 100%;
+    left: -114px;      
+}
+
+.box-search-mobile {
+    background-color: $white;
+    padding-left: 14px;
+    margin-left: 3px;
+    margin-bottom: 5px;
+}
+.desktop-search-panel {
+ padding-left:5px;
+}
+
+.search-box{
+    margin-left: 20px;
+}
+
+.panelup-item:hover, .panelup-item:active, .panelup-item:visited {
+     text-decoration: none;
+}
+.grid-background {
+ background-color: $white;
+}
+
+.desktop {      
+    .sector-container {
+      width: 33.3%;
+      padding-left: 0px;
+    }
+
+    .sector-row {
+     float: left;
+     min-height: 1px;
+     padding-left: 0px;
+    }
+
+    .sector-item {
+        text-align: left;        
+        padding-bottom: 5px;        
+    }      
+ 
+.panelup-item{
+        padding-left: 5px;
+        min-width: 230px;
+   }
+}  
+
+
+a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    background-color: $primary-color;
+    text-decoration: none;
+    color:white!important;
+    padding-left: 5px;
+}
+
+.sector-item-mobile {
+    text-align: left;
+    color:$item-sector-color !important ;
+    padding-bottom: 5px;  
+    width:100% !important;
+    min-width:320px !important;
+}
+
+.col-1-1:not(:last-child) .sector-item-mobile {    
+    border-bottom: 1px solid $item-sector-color;
+}
+
+.country-name {     
+    display: inline-block;
+    width: 80%;
+}
+button.login {        
+    align-content: center;
+    padding: 0px;
+    min-width: 55px;
+}
+
+.tablet {        
+    &.portrait {
+        a.nav-link {
+            font-size:100%;
+            font-weight:bold;
+        }
+    }
+    &.landscape {
+        a.nav-link {
+            font-size:100%;
+            font-weight:bold;
+        }          
+    }    
+    
+    .country-container {
+        width: 33.3%;
+        padding-left: 5px;        
+        display: inline-block;   
+    }
+
+    .panelup-item {
+       /* border-bottom: 1px solid $item-sector-color ;*/
+        padding-left: 5px;
+        width: 100% ;
+    }
+    
+    .panel-popup {
+        left: 20px;
+     }       
+
+}
+
+.mobile {
+    .app-toolbar.mat-toolbar-single-row {
+        height: $header-height;
+        padding: 0;
+    }
+    .country-container {
+        width: 50%;
+        padding-left: 5px;        
+        display: inline-block;   
+    }
+
+    &.landscape {
+      .country-container {
+            width: 33.3%;
+            padding-left: 5px;         
+            display: inline-block; 
+        }
+    }
+
+    a.nav-link {
+        font-size: 80%;
+        font-weight: 100;
+        padding-left: 0px;
+        padding-right: 0px;
+    }   
+
+    
+    .account-panel{
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        height: 33px;
+    }
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+        display: none;
+    }  
+
+    .panelup-item{
+        display: inherit;      
+        width: 100% !important;
+    }    
+
+}
+
+

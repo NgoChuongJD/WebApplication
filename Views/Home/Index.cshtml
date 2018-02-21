@@ -1,0 +1,60 @@
+@{
+    // Currently setup cultures
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = Helpers.JsonSerialize(LocalizationOptions.Value.LanguageToCultureProvider.AllSupportedCultures
+        .Select(c => new { Value = c.Name, Text = c.NativeName, Current = (c.Name == Thread.CurrentThread.CurrentCulture.Name) })
+        .ToList()
+    );
+
+    var externalLogings = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+    // Currently setup external logins
+    var loginProviders = Helpers.JsonSerialize(externalLogings.Select(a => a.Name));
+    var polyfill_scripts = ViewBag.polyfillScripts as List<string>;
+}
+
+<arp-app>
+    @await Html.PartialAsync("_LoadingSpinnerPartial")
+</arp-app>
+<noscript>
+    
+</noscript>
+<script>
+        var wowbook_libs = JSON.parse('@Html.Raw(ViewBag.wowbookVendorScripts)');
+        var pdfjsWorkerUrl = @Html.Raw(ViewBag.pdfJsWorkerScript);
+
+        var appData = {
+            cultures: JSON.parse('@Html.Raw(cultureItems)'),
+            content : JSON.parse('@Html.Raw(ViewBag.content)'),
+            loginProviders: JSON.parse('@Html.Raw(loginProviders)'),
+            sectors: JSON.parse('@Html.Raw(ViewBag.sectors)'),
+            countries: JSON.parse('@Html.Raw(ViewBag.countries)')
+        };
+</script>
+@if(ViewBag.isIE)
+{
+    <script>
+        @* To fix bug on IE 10,11: https://github.com/angular/zone.js/issues/933 *@
+        __Zone_enable_cross_context_check = true;
+    </script>
+    foreach (var item in polyfill_scripts)
+    {
+        <script src="@item" asp-append-version="true"></script>
+    }
+}
+
+<script src="~/dist/vendor.js" asp-append-version="true"></script> 
+
+@section scripts {
+    <script src="~/dist/main-client.js" asp-append-version="true"></script>
+}
+
+
+@{
+
+    foreach (var provider in externalLogings)
+    {
+         <strong>@provider.Name</strong><br>
+    }
+
+}

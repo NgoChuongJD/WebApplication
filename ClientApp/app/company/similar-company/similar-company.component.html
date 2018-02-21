@@ -1,0 +1,39 @@
+<div *ngIf="!dataLoadCompletedState" class="row center d-block p-2">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i>
+    <b class="d-block">Loading...</b>
+</div>
+
+<div class="similar-company company-m-bottom" *ngIf="dataLoadCompletedState">
+    <div class="similar-company-tittle">{{otherReportTitle | translate}}</div>
+    <div class="row position-relative">
+        <div class="similarCompanyGroups mx-auto">
+            <div class="similar-company-cards similarCompanyCards">
+                <div class="message-info" *ngIf="companies.length <=0">{{messageAlert| translate}}</div>
+                <div *ngFor="let company of companies" class="similar-company-card similarCompanyCard">
+                    <a  href="javscript:void();" class="similar-company-card-link" 
+                       [routerLink] ="['/company', company.companyCode, company.companyNameEncoded]">
+                        <div class="similar-company-icon similarCompanyIcon" [style.background-image]="'url(' + company.logoLocation + ')'" >
+                        </div>
+                        <div class="similarCompanyText">
+                            <div class="similar-company-card-name">
+                                {{company.companyName | translate}}
+                            </div>
+                            <div class="similar-company-card-count">
+                                {{company.totalReports}} reports
+                            </div>
+                            <div class="similar-company-card-sector">
+                                {{company.sectorName | translate}}
+                            </div>
+                        </div>
+                    </a>
+                </div>             
+
+            </div>
+            <div class="similar-company-control similarCompanyControl event-none">
+            </div>
+        </div>
+    </div>
+    <div *ngIf="companies.length > 0" class="similar-company-description" style="margin-top: 0px;">
+        <button mat-raised-button class="btn-more-companies" (click)="goToExplore(sectorId)">Explore</button>
+    </div>
+</div>

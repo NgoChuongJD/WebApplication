@@ -1,0 +1,484 @@
+* {
+    box-sizing: border-box;
+}
+
+.noTransition {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
+}
+
+.img-landscape {
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: color 0 ease-in;
+    transition: none;
+}
+
+.link-nostyle,
+.link-nostyle:hover,
+.link-nostyle:active {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    line-height: 1.2;
+}
+
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home-report-content-card {
+    margin-bottom: 40px;
+}
+
+.home-report-tittle {
+    text-align: center;
+}
+
+.home-report-description {
+    text-align: center;
+}
+
+.home-report-filter {
+    margin-top: 21px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 3%;
+}
+
+.home-report-width {
+    width: 100%;
+}
+
+.home-report-content {
+    max-width: 1225px;
+    width: 100%;
+    padding-top: 80px;
+}
+
+.float_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.hide {
+    display: none !important;
+}
+
+.report_year {
+    color: #373737;
+    font-size: 18px;
+    letter-spacing: 3.33%;
+    line-height: 26px;
+}
+
+.report_company {
+    font-size: 18px;
+    letter-spacing: 3.33%;
+    line-height: 19px;
+    color: #00529B;
+    overflow: hidden;
+}
+
+.img-landscape,
+.img-portrait {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.report_image {
+    margin-bottom: 10px;
+}
+
+.report_sector_url {
+    text-decoration: none;
+    color: #A3A3A3;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.btn-view-more {
+    color: $primary-color !important;
+    font-size: 18px;
+    width: 290px !important;
+    line-height: 21px;
+    background-color: white;
+    height: 50px !important;
+    border-radius: 0.3em !important;
+    border: 1px solid $primary-color !important;
+}
+
+.btn-view-more-container {
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+.mobile.landscape {
+    body {
+        background-color: #111111;
+    }
+    .home-report-content {
+        padding-top: 60px;
+    }
+    .home-report-content-landscape,
+    .home-report-content-portrait {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .home-report-content-portrait {
+        width: 20%;
+    }
+    .home-report-content-landscape {
+        width: 20%;
+    }
+    .report_detail {
+        max-width: 100%;
+        width: 78px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .report_image>.img-portrait {
+        width: 100%;
+    }
+    .report_image>.img-landscape {
+        width: 100%;
+    }
+    .btn-view-more-container {
+        text-align: center;
+        padding-bottom: 100px;
+    }
+    .home-report-tittle {
+        padding-top: 80px;
+        line-height: 50px;
+        font-size: 38px;
+        letter-spacing: 0.0157895em;
+        color: #1E1E1E;
+    }
+    .home-report-description {
+        font-size: 20px;
+        padding-top: 10px;
+        letter-spacing: 0.03em;
+        color: #474747;
+    }
+    .report_company,
+    .report_sector,
+    .report_year {
+        line-height: 20px;
+        font-size: 14px;
+    }
+    .report_sector {
+        display: none;
+        padding-top: 5px;
+    }
+    .report_company {
+        padding-top: 5px;
+    }
+    .report_year {
+        padding-top: 10px;
+    }
+    .btn-view-more {
+        color: $primary-color !important;
+        font-size: 18px;
+        width: 250px !important;
+        line-height: 21px;
+        background-color: white;
+        height: 40px !important;
+        border-radius: 0.3em !important;
+        border: 1px solid $primary-color !important;
+    }
+}
+
+.mobile.portrait {
+    .report_detail {
+        max-width: 100%;
+        width: 78px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .home-report-content {
+        padding-top: 60px;
+    }
+    .home-report-content-landscape,
+    .home-report-content-portrait {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .home-report-content-portrait {
+        width: 33.33%;
+    }
+    .home-report-content-landscape {
+        width: 33.33%;
+    }
+    .report_image>.img-portrait {
+        width: 100%;
+    }
+    .report_image>.img-landscape {
+        width: 100%;
+    }
+    .home-report-tittle {
+        padding-top: 80px;
+        line-height: 50px;
+        font-size: 38px;
+        letter-spacing: 0.0157895em;
+        color: #1E1E1E;
+    }
+    .home-report-description {
+        font-size: 20px;
+        padding-top: 10px;
+        letter-spacing: 0.03em;
+        color: #474747;
+    }
+    .report_company,
+    .report_sector,
+    .report_year {
+        line-height: 20px;
+        font-size: 14px;
+    }
+    .report_sector {
+        display: none;
+        padding-top: 5px;
+    }
+    .report_company {
+        padding-top: 5px;
+    }
+    .report_year {
+        padding-top: 10px;
+    }
+    .btn-view-more {
+        color: $primary-color !important;
+        font-size: 18px;
+        width: 250px !important;
+        line-height: 21px;
+        background-color: white;
+        height: 40px !important;
+        border-radius: 0.3em !important;
+        border: 1px solid $primary-color !important;
+    }
+}
+
+.tablet.landscape {
+    .home-report-content {
+        padding-top: 60px;
+    }
+    .home-report-content-portrait {
+        width: 20%;
+    }
+    .home-report-content-landscape {
+        width: 20%;
+    }
+    .home-report-content-landscape,
+    .home-report-content-portrait {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .report_detail {
+        max-width: 100%;
+        width: 118px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .report_image>.img-portrait {
+        width: 100%;
+    }
+    .report_image>.img-landscape {
+        width: 100%;
+    }
+    .home-report-tittle {
+        padding-top: 80px;
+        line-height: 50px;
+        font-size: 38px;
+        letter-spacing: 0.0157895em;
+        color: #1E1E1E;
+    }
+    .home-report-description {
+        font-size: 20px;
+        padding-top: 10px;
+        letter-spacing: 0.03em;
+        color: #474747;
+    }
+    .report_company,
+    .report_sector,
+    .report_year {
+        line-height: 18px;
+        font-size: 17px;
+    }
+    .report_sector {
+        display: none;
+        padding-top: 5px;
+    }
+    .report_company {
+        padding-top: 5px;
+    }
+    .report_year {
+        padding-top: 10px;
+    }
+    .btn-view-more {
+        color: $primary-color !important;
+        font-size: 18px;
+        width: 250px !important;
+        line-height: 21px;
+        background-color: white;
+        height: 40px !important;
+        border-radius: 0.3em !important;
+        border: 1px solid $primary-color !important;
+    }
+}
+
+.tablet.portrait {
+    .home-report-content {
+        padding-top: 60px;
+    }
+    .home-report-content-portrait {
+        width: 25%;
+    }
+    .home-report-content-landscape {
+        width: 25%;
+    }
+    .home-report-content-landscape,
+    .home-report-content-portrait {
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    .report_detail {
+        max-width: 100%;
+        width: 118px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .report_image>.img-portrait {
+        width: 100%;
+    }
+    .report_image>.img-landscape {
+        width: 100%;
+    }
+    .home-report-tittle {
+        padding-top: 80px;
+        line-height: 50px;
+        font-size: 38px;
+        letter-spacing: 0.0157895em;
+        color: #1E1E1E;
+    }
+    .home-report-description {
+        font-size: 20px;
+        padding-top: 10px;
+        letter-spacing: 0.03em;
+        color: #474747;
+    }
+    .report_company,
+    .report_sector,
+    .report_year {
+        line-height: 18px;
+        font-size: 17px;
+    }
+    .report_sector {
+        display: none;
+        padding-top: 5px;
+    }
+    .report_company {
+        padding-top: 5px;
+    }
+    .report_year {
+        padding-top: 10px;
+    }
+    .btn-view-more {
+        color: $primary-color !important;
+        font-size: 20px;
+        width: 250px;
+        background-color: white;
+        height: 40px;
+        border-radius: 0.3em !important;
+        border: 1px solid $primary-color !important;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    @media only screen and (min-device-height: 312px) {}
+    @media only screen and (min-height: 600px) {}
+}
+
+@media only screen and (orientation: portrait) {
+    @include bp(dxsmall) {
+        // @media (min-width:320px) {
+    }
+    @include bp(dtiny) {}
+}
+
+.desktop {
+    .home-reports-items {
+        max-width: 1225px;
+    } // @media (min-width:1025px) { 
+    .report_detail {
+        max-width: auto;
+        width: auto;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .home-report-content {
+        padding-top: 80px;
+    }
+    .home-report-content-landscape,
+    .home-report-content-portrait {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .home-report-content-portrait {
+        width: 245px;
+    }
+    .home-report-content-landscape {
+        width: 352px;
+    }
+    .report_image>.img-portrait {
+        width: 100%;
+    }
+    .report_image>.img-landscape {
+        width: 100%;
+    }
+    .home-report-tittle {
+        padding-top: 80px;
+        line-height: 50px;
+        font-size: 38px;
+        letter-spacing: 0.0157895em;
+        color: #1E1E1E;
+    }
+    .home-report-description {
+        font-size: 20px;
+        padding-top: 10px;
+        letter-spacing: 0.03em;
+        color: #474747;
+    }
+    .report_company,
+    .report_sector,
+    .report_year {
+        font-size: 18px;
+        line-height: 19px;
+    }
+    .report_sector {
+        display: block;
+        padding-top: 10px;
+    }
+    .report_company {
+        padding-top: 10px;
+    }
+    .report_year {
+        padding-top: 20px;
+    }
+    .btn-view-more {
+        color: $primary-color !important;
+        font-size: 18px;
+        width: 290px !important;
+        line-height: 21px;
+        background-color: white;
+        height: 50px !important;
+        border-radius: 0.3em !important;
+        border: 1px solid $primary-color !important;
+    }
+}

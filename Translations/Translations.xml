@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!--
+    The <node/>'s attributes specification:
+    
+    1. "name": Required - The unique name of a label.
+    2. "dbid": Optional - The id of the existing label in language database.
+    3. "preserve": Optional, values (true/false) - Used to combine with "dbid" attribute
+                    to prevent generator tool checks and inserts this label to database.
+  -->
+  <node name="loading">Loading...</node>
+  <node name="app_title_desktop">Annual Report Promotion</node>
+  <node name="app_title_tablet">ARP</node>
+  <node name="sector">Sector</node>
+  <node name="market">Country</node>
+  <node name="login">Login</node>
+  <node name="sign_up">Sign up</node>
+  <node name="country">Country</node>
+  <node name="search">Search</node>
+</root>

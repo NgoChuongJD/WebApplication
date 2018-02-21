@@ -1,0 +1,26 @@
+﻿<div class="suggestion-block">
+    <input matInput type="search"
+           [formControl]="suggestionControl"
+           [placeholder]="placeholder | translate"
+           name="query"
+           id="searchText"
+           aria-label="Find company"
+           [(ngModel)]="query"
+           (focus)="enterSuggestBox()"
+           (blur)="leaveSuggestBox()"
+           (input)="typingMode()"
+           (keyup.arrowdown)="getNextItem()"
+           (keyup.arrowup)="getPrevItem()"
+           (keyup.enter)="goSearch()" />
+    <button mat-icon-button aria-label="Search button" (click)="goSearch()">
+        <i class="material-icons">search</i>
+    </button>
+</div>
+<div class="suggest-box col-sm-3" [ngClass]="{'suggest-box-hidden': showSuggestBox == false}">
+    <ul class="list-group">
+        <li class="list-group-item" [ngClass]="{'highlight-row-item': item.highlighted}" *ngFor="let item of suggestResult" (click)="goExplore(item.name)">
+            <!--<div class="symbol-col">{{item.symbol}}</div>-->
+            <div class="name-col" [innerHTML]="item.name | boldtextsearch: query"></div>
+        </li>
+    </ul>
+</div>

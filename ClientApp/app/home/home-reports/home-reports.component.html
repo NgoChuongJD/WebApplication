@@ -1,0 +1,11 @@
+﻿<div class="home-report-tittle">{{reports_title | translate}}</div>
+<div class="home-report-description">{{reports_description | translate}}</div>
+<div class="home-report-filter" hidden>
+    <arp-home-reports-sectors></arp-home-reports-sectors>
+</div>
+<div class="row home-report-content mx-auto">
+    <arp-home-reports-items class="mx-auto home-report-width"></arp-home-reports-items>
+</div>
+<div class="btn-view-more-container">
+    <button mat-raised-button class="btn-view-more" (click)="navigateToReports()" >View More</button>
+</div> 

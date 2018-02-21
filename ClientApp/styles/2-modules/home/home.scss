@@ -1,0 +1,101 @@
+.homepage {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    font-family: "Roboto";
+}
+
+//header
+$hd-btn-color: #274C5E;
+$hd-text-color: #474747;
+//featured companies
+$fc-bgr-color: #F2F2F2;
+$fc-btn-color: #77919D;
+$fc-title-color: #1E1E1E;
+$fc-text-color: #474747;
+//color
+$white: #FFFFFF;
+.arp-home-header {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    font-family: "Roboto";
+}
+
+.home-header-explore {
+    background-color: $hd-btn-color;
+    height: 50px;
+    width: 290px;
+    border-radius: 4px;
+    color: $white;
+    text-align: center;
+    font-size: 22px;
+    line-height: 50px;
+    font-style: normal;
+    font-family: Roboto;
+}
+
+@include bp(xsmall) {
+    .home-header-image {
+        min-height: 244px;
+    }
+    .home-header-title {
+        text-align: center !important;
+        color: $hd-text-color;
+        font-family: Roboto;
+        font-size: 18px;
+        line-height: 20px;
+        color: #474747;
+        margin-bottom: 15px;
+    }
+    .home-header-explore {
+        width: 130px;
+        height: 25px;
+        font-size: 10px;
+        line-height: 25px;
+    }
+}
+
+@include bp(tiny) {
+    .home-header-image {
+        min-height: 436.5px;
+    }
+    .home-header-title {
+        text-align: center !important;
+        color: $hd-text-color;
+        font-family: Roboto;
+        font-size: 30px;
+        line-height: 20px;
+        color: #474747;
+        margin-bottom: 15px;
+    }
+    .home-header-explore {
+        width: 260px;
+        height: 50px;
+        font-size: 20px;
+        line-height: 50px;
+    }
+}
+
+@include bp(xbig) {
+    .home-header-title {
+        text-align: center !important;
+        color: $hd-text-color;
+        font-family: Roboto;
+        font-size: 38px;
+        line-height: 60px;
+        color: #474747;
+        margin-bottom: 15px;
+    }
+    .home-header-image {
+        min-height: 607px;
+    }
+    .home-header-explore {
+        width: 290px;
+        height: 50px;
+        font-size: 15px;
+        line-height: 50px;
+    }
+      
+}

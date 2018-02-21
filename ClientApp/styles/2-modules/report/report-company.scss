@@ -1,0 +1,333 @@
+﻿.flex-container {
+    display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox; /* TWEENER - IE 10 */
+    display: -webkit-flex; /* NEW - Chrome */
+    display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+.btn-view-more:hover {
+    background-color: #274C5E;
+    color: white !important;
+}
+
+.tablet, .mobile {
+    .btn-view-more:hover {
+        background-color: white;
+        color: #274C5E !important;
+    }
+}
+
+.message-info {
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.desktop {
+    .info-box {
+        display: none !important;
+    }
+}
+
+.info-box {
+    padding: 10px;
+
+    .company-logo {
+        float: left;
+        img {
+            padding: 0.5em;
+            max-height: 100px;
+            max-width: 100px;
+            border: none;
+         }
+    }
+
+    .title-box {
+        float: left;
+        padding-left: 10px;
+    }
+}
+
+.similar-company-report {
+    background-color: white;
+    margin-bottom: -16px;
+}
+
+.p-bottom {
+    padding-bottom: 30px;
+}
+
+arp-owner-company-report {
+    /*background-color: rgba(239, 239, 239, 0.75);*/
+}
+
+.report-title {
+    display: block;
+    align-content: center;
+
+    .language {
+        background-color: $primary-color;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+        width: 23px;
+        height: 23px;
+        font-size: 12px;
+        display: inline-block;
+        vertical-align: text-bottom;
+        border-radius: 2px;
+        position: relative;
+
+        span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .report-text {
+        display: inline-block;
+        padding-right: 5px;
+        color: gray;
+    }
+}
+
+.company-report-section {
+    display: block;
+    width: 100%;
+    padding: 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    .title-section {
+        padding: 25px;
+        display: block;
+        word-wrap: break-word;
+    }
+
+    .company-report {
+        padding-bottom: 0;
+        margin: auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .report-list {
+        width: 100%;
+
+        .report-card {
+            flex-direction: column;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            padding: 0px 16px;
+            padding-bottom: 32px;
+            margin: 0;
+
+            .report-info {
+                margin-top: 10px;
+                min-height: 50px;
+                border: none;
+                word-wrap: break-word;
+            }
+
+            .report-company-title {
+                min-height: 130px;
+            }
+
+            .report-info {
+                width: 100%;
+            }
+
+            .report-text, .company-name {
+                font-weight: 600;
+                font-size: 0.9em;
+            }            
+
+            .company-name {
+                color: rgb(0, 82, 155);
+                display: block;
+            }
+        }
+    }
+
+    .btn-view-more {
+        max-width: 255px;
+        max-height: 45px;
+        font-size: 1.2em;
+    }
+}
+
+.desktop {
+    .company-report-section {
+        .title-section {
+            padding: 25px;
+            padding-left: 75px;
+        }
+
+        .company-report {
+            padding: 25px 0;
+            padding-bottom: 0;
+            justify-content: flex-start;
+        }
+    }
+
+    .report-list .report-card {
+        .report-info {
+            min-height: 50px;
+        }
+
+        .report-company-title {
+            min-height: 100px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1365px) {
+        .company-report-section .company-report {
+            width: 100%;
+        }
+
+        .report-list .report-card {
+            width: 20%;
+
+            .img-report {
+                width: 100%;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1366px) {
+        .company-report-section .company-report {
+            max-width: 1366px;
+        }
+
+        .report-list .report-card {
+            .img-report {
+                max-width: 305px;
+                max-height: 340px;
+            }
+        }
+    }
+}
+
+.tablet {
+    .company-report-section {
+        padding: 0;
+
+        .company-report {
+            padding: 10px 0;
+            max-width: 100%;
+        }
+
+        .h3 { font-size: 1em; }
+    }
+
+    &.portrait {
+        .report-list .report-card {
+            width: 33.3%;
+            min-width: 168px;
+        }
+    }
+
+    &.landscape {
+        .report-list .report-card {
+            width: 25%;
+            min-width: 178px;
+        }
+    }
+
+    @media only screen and (min-device-width: 1024px) and (max-device-width: 1279px) {
+        .report-list .report-card {
+            width: 25% !important;
+            min-width: 178px !important;
+        }
+    }
+
+    .report-list .report-card {
+        .img-thumbnail.img-report {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        .report-text, .company-name {
+            font-size: 12px;
+        }
+
+        .report-info {
+            min-height: 70px;
+        }
+
+        .report-company-title {
+            min-height: 120px;
+        }
+    }
+}
+
+.mobile {
+    &.portrait {
+        .report-list .report-card {
+            width: 50%;
+        }
+    }
+
+    &.landscape {
+        .report-list .report-card {
+            width: 33%;
+        }
+    }
+
+    .company-report-section {
+        padding: 0;
+
+        .h3 {
+            font-size: 1em;
+        }
+
+        .title-section {
+            padding: 10px;
+            font-size: 1.1em;
+            word-break: break-all;
+        }
+
+        .company-report {
+            padding: 15px 0;
+            max-width: 100%;
+        }
+    }
+
+    .report-list .report-card {
+        .img-thumbnail.img-report {
+            padding: 0;
+            border: none;
+            border-radius: 0;
+        }
+
+        .report-text, .company-name {
+            font-size: 12px;
+        }
+
+        .report-text {
+            font-size: 0.8em;
+            line-height: normal;
+        }
+
+        .report-info {
+            min-height: 50px;
+
+            .language {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+                font-weight: 600;
+            }
+        }
+
+        .report-company-title {
+            min-height: 100px;
+        }
+    }
+}

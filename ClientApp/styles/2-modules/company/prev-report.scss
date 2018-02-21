@@ -1,0 +1,49 @@
+﻿
+#report {
+    padding-top: $header-height-single;
+    background-color: white;
+    position: relative;
+
+    .previous-report-header {
+        display: block;
+        line-height: 50px;
+        font-family: Roboto;
+        font-weight: normal;
+        font-size: 38px;
+        text-align: center;
+        padding-bottom: 25px;
+
+        .total {
+            font-size: 1.35em;
+            color: $primary-color;
+        }
+
+    }
+}
+
+
+.desktop {
+    #report, similar-company {
+        z-index: 100;
+        position: relative;
+    }
+}
+
+.tablet {
+    #report {
+        
+        z-index: 100;
+        .previous-report-header {
+            font-size: 30px;
+        }
+    }
+}
+
+.mobile {
+    #report {
+        .previous-report-header {
+            font-size: 22px;
+            padding-bottom: 0;
+        }
+    }
+}

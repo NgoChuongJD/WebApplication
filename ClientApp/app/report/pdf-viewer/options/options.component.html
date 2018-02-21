@@ -1,0 +1,60 @@
+﻿<div class="row report-options d-none d-lg-flex">
+    <div class="company-logo">
+        <a href="javascript:void(0)" title="See company {{companyName}}"
+           [routerLink]="['/company', companyCode, companyNameEncoded]" >
+            <img src="{{logo}}" class="img-landscape img-thumbnail img-fluid" alt="{{companyName}} logo"/>
+        </a>
+    </div>
+    <div class="company-logo under col-md-1"></div>
+    
+    <!-- Title -->
+    <div class="title-box-option col-md-3 col-lg-2">
+        <div class="report-info">
+            <div class="row title report-title">
+                <span class="report-text"> {{title}} </span>
+                <div class="language">
+                    <span>{{languageCode}}</span>
+                </div>
+            </div>
+            <div class="row company-name">
+                <a href="javascript:void(0)" title="See company {{companyName}}"
+                   [routerLink]="['/company', companyCode, companyNameEncoded]" >
+                    {{companyName}}
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!--Action-->
+    <div class="col-md-8 col-lg-9 action">
+        <div class="row">
+            <div class="action-item col-4" title="{{overview | translate}}">
+                <div class="action-text">
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
+                        <i class="fa fa-list fa-stack-1x" aria-hidden="true"></i>
+                    </span>
+                    {{overview | translate}}
+                </div>
+            </div>
+            <div class="action-item col-4" (click)="openSavingModal()" title="{{saving | translate}}">
+                <div class="action-text">
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
+                        <i class="fa fa-download fa-stack-1x" aria-hidden="true"></i>
+                    </span>
+                    {{saving | translate}}
+                </div>
+            </div>
+            <div class="action-item col-4" (click)="openSharingModal()" title="{{ share | translate }}">
+                <div class="action-text">
+                    <span class="fa-stack">
+                        <i class="fa fa-circle-thin fa-stack-2x" aria-hidden="true"></i>
+                        <i class="fa fa-share-alt fa-stack-1x" aria-hidden="true"></i>
+                    </span>
+                    {{ share | translate }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

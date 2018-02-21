@@ -1,0 +1,232 @@
+﻿arp-suggest-box {
+    .mat-form-field-wrapper {
+        padding-bottom: 1em;
+    }
+
+    .mat-form-field-label-wrapper {
+        top: -5px;
+    }
+
+    .mat-form-field-label {
+        color: white;
+        font-size: large;
+        font-weight: normal;
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    .mat-form-field-should-float .mat-form-field-label, .mat-focused .mat-form-field-label {
+        display: none !important;
+    }
+
+    .suggestion-block {
+        width: 280px;
+        color: white;
+        margin-right: 5px;
+        border-bottom: 1px solid white;
+
+        .mat-icon-button {
+            height: 30px;
+            width: 30px;
+            margin-left: -30px;
+        }
+    }
+
+    .suggestion-block:focus-within {
+        border: none;
+    }
+
+    #searchText {
+        vertical-align: middle;
+        background-color: $primary-color;
+        border: none;
+        padding: 5px 10px;
+        padding-right: 30px;
+        color: white;
+        width: 100%;
+        line-height: 1.5em;
+        font-size: 14px;
+    }
+
+    #searchText::placeholder {
+        color: white;
+    }
+
+    #searchText:-ms-input-placeholder {
+        color: white;
+    }
+
+    #searchText:focus {
+        background: white;
+        color: $primary-color;
+        border-radius: 3px 3px;
+        border: solid 1px $primary-color;
+    }
+
+    #searchText:focus::placeholder {
+        color: grey;
+    }
+
+    .suggest-box {
+        min-height: 30px;
+        width: 90%;
+        max-width: 90%;
+        color: black;
+        display: block;
+        position: absolute;
+        background: white;
+        z-index: 2;
+        border: solid 1px $primary-color;
+        border-radius: 2px;
+        /*margin-top: -2px;*/
+        margin: 0;
+        padding: 0;
+
+        .list-group-item {
+            border: none;
+            list-style-type: none;
+            padding: 5px;
+            color: gray;
+            border-radius: 0px;
+        }
+
+        .list-group-item:hover, .highlight-row-item {
+            background-color: $primary-color;
+            color: white;
+            cursor: default;
+        }
+
+        .symbol-col {
+            text-transform: uppercase;
+            max-width: 35px;
+            margin-right: 5px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .name-col {
+            text-transform: capitalize;
+            display: inline-block;
+            word-wrap: break-word;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+    }
+
+    .suggest-box.suggest-box-hidden {
+        display: none;
+    }
+}
+
+.desktop {
+    #filter-side-bar {
+        .search-box-filter {
+            margin-bottom: 25px;
+        }
+
+        arp-suggest-box {
+            #searchText {
+                display: block;
+                width: 100%;
+                height: 34px;
+                padding: 6px 12px;
+                margin: 0;
+                font-size: 14px;
+                line-height: 1.428571429;
+                color: #555;
+                vertical-align: middle;
+                background-color: #fff;
+                border: 1px solid #77909d;
+                border-radius: 4px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            }
+
+            #searchText::placeholder {
+                color: gray;
+            }
+
+            #searchText:-ms-input-placeholder {
+                color: gray;
+            }
+
+            .suggestion-block, .suggest-box {
+                width: 280px;
+                margin: 0;
+            }
+
+            .suggestion-block {
+                .mat-icon-button {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.tablet {
+    &.portrait {
+        arp-suggest-box {
+            .suggestion-block {
+                width: 100%;
+                margin-left: 20px;
+            }
+
+            .suggest-box {
+                width: 50%;
+            }
+
+            .list-group {
+                width: 100%;
+            }
+        }
+    }
+
+
+    &.landscape {
+        arp-suggest-box {
+            .suggestion-block, .suggest-box {
+                margin-left: 20px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+.desktop {
+    arp-suggest-box {
+        .suggestion-block, .suggest-box {
+            width: 280px;
+            margin-left: 12px;
+        }
+    }
+}
+
+.mobile {
+    arp-suggest-box {
+        .suggestion-block {
+            width: unset;
+        }
+
+        .suggest-box, .list-group {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #searchText {
+            background: $white-color;
+            color: $primary-color;
+        }
+
+        #searchText::placeholder {
+            color: grey;
+        }
+
+        .mat-icon-button {
+            color: $primary-color;
+        }
+    }
+}

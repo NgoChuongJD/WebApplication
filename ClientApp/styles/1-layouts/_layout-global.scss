@@ -1,0 +1,124 @@
+body.mat-sidenav-open {
+    /** Make scrollable only on mat-sidenav coponent */
+    overflow-y: hidden;
+    .mat-drawer {
+        overflow-y: hidden !important;
+    }
+
+    mat-sidenav-container.sidenav-container {
+        /** Overlapse the mat-toolbar */
+        z-index: 11;
+    }
+
+    .mat-tab-group {
+        /** Make the .mat-tab-body-content be scrollable */
+        height: 100%;
+    }
+}
+
+.clearfix {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.clear {
+    clear: both;
+}
+
+.l-clearfix:after, 
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.is-visible {
+    display: block!important;
+}
+
+.l-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.mat-progress-bar {
+    height: $progress-bar-height !important;
+    position: fixed !important;
+    color: forestgreen;
+    z-index: 20; /* to be display in front of mat-sidenav */
+}
+
+mat-sidenav-container.sidenav-container {
+    min-height: 100%;
+    height: auto!important;
+    max-width: 100%;
+    margin: 0;
+    -webkit-transform: none;
+    transform: none;
+}
+
+.mat-sidenav.sidenav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0;
+    min-width: 260px;
+    background-color: #fafafa;
+    box-shadow: 6px 0 6px rgba(0,0,0,.1);
+    height: 100vh;
+    padding-top: $header-height-single;
+}
+
+.sidenav-content {
+    min-height: 100vh;
+    padding: $header-height-single 0rem 1rem;
+    overflow: auto;
+}
+
+a:hover {
+    cursor: pointer !important;
+}
+
+mat-tab-group {
+    .mat-tab-label.mat-tab-label-active {
+        background-color: $primary-color;
+        opacity: 1;
+        color: $white-color;
+    }
+}
+
+
+.mobile {
+    .mat-sidenav.sidenav {
+        padding-top: $header-height;
+    }
+    .sidenav-content {
+        min-height: 450px;
+        padding: ($header-height * 2) 0rem 1rem;
+    }
+    .sidenav-content.without-search-box {
+        padding-top: $header-height;
+    }
+}

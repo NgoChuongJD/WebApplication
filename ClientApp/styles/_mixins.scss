@@ -1,0 +1,143 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+
+/************************************
+
+             Media queries
+
+ To use these, put this snippet in the appropriate selector:
+
+     @include bp(tiny) {
+         background-color: purple;
+     }
+
+     Replace "tiny" with "medium" or "big" as necessary.
+*************************************/
+
+@mixin bp($point) {
+    $bp-xsmall: "screen and (min-width: 320px)";
+    $bp-teeny: "screen and (min-width: 480px)";
+    $bp-tiny: "screen and (min-width: 600px)";
+    $bp-small: "screen and (min-width: 650px)";
+    $bp-medium: "screen and (min-width: 800px)";
+    $bp-big: "screen and (min-width: 1000px)";
+    $bp-xbig: "screen and (min-width: 1025px)";
+    $bp-large: "screen and (min-width: 1281px)";
+    $bpd-xsmall: "screen and (min-device-width: 320px)";
+    $bpd-teeny: "screen and (min-device-width: 480px)";
+    $bpd-tiny: "screen and (min-device-width: 600px)";
+    $bpd-small: "screen and (min-device-width: 650px)";
+    $bpd-medium: "screen and (min-device-width: 800px)";
+    $bpd-big: "screen and (min-device-width: 1000px)";
+    $bpd-xbig: "screen and (min-device-width: 1025px)";
+    // max width
+    $bp-max-xsmall: "screen and (max-width: 320px)";
+    $bp-max-teeny: "screen and (max-width: 480px)";
+    $bp-max-tiny: "screen and (max-width: 599px)";
+
+    @if $point==big {
+        @media #{$bp-big} {
+            @content;
+        }
+    }
+    @else if $point==medium {
+        @media #{$bp-medium} {
+            @content;
+        }
+    }
+    @else if $point==small {
+        @media #{$bp-small} {
+            @content;
+        }
+    }
+    @else if $point==tiny {
+        @media #{$bp-tiny} {
+            @content;
+        }
+    }
+    @else if $point==teeny {
+        @media #{$bp-teeny} {
+            @content;
+        }
+    }
+    @else if $point==xsmall {
+        @media #{$bp-xsmall} {
+            @content;
+        }
+    }
+    @else if $point==xbig {
+        @media #{$bp-xbig} {
+            @content;
+        }
+    }
+    @else if $point==dbig {
+        @media #{$bpd-big} {
+            @content;
+        }
+    }
+    @else if $point==dmedium {
+        @media #{$bpd-medium} {
+            @content;
+        }
+    }
+    @else if $point==dsmall {
+        @media #{$bpd-small} {
+            @content;
+        }
+    }
+    @else if $point==dtiny {
+        @media #{$bpd-tiny} {
+            @content;
+        }
+    }
+    @else if $point==dteeny {
+        @media #{$bpd-teeny} {
+            @content;
+        }
+    }
+    @else if $point==dxsmall {
+        @media #{$bpd-xsmall} {
+            @content;
+        }
+    }
+    @else if $point==dxbig {
+        @media #{$bpd-xbig} {
+            @content;
+        }
+    }
+    @else if $point==large {
+        @media #{$bp-large} {
+            @content;
+        }
+    }
+    @else if $point == max-xsmall {
+        @media #{$bp-max-xsmall} {
+            @content;
+        }
+    }
+    @else if $point == max-teeny {
+        @media #{$bp-max-teeny} {
+            @content;
+        }
+    }
+    @else if $point == max-tiny {
+        @media #{$bp-max-tiny} {
+            @content;
+        }
+    }
+}
+
+@mixin rotate($degrees) {
+    -moz-transform: rotate($degrees);
+    -webkit-transform: rotate($degrees);
+    -o-transform: rotate($degrees);
+    -ms-transform: rotate($degrees);
+    transform: rotate($degrees);
+    transition: transform 150ms;
+    transition-timing-function: ease-in-out;
+}

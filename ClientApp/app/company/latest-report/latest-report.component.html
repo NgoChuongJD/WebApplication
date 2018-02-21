@@ -1,0 +1,15 @@
+<div class="latest-report-image">
+    <img class="cover-conner" alt="corner" src="{{cornerImage}}">
+    <a href="javascript:void(0);" class="report_detail_url" (click)="goToViewingReport(latestReport.companyName, latestReport.id,latestReport.title)" >
+        <img class="img-portrait img-thumbnail img-report" src="{{latestReport.bigThumbnailFileLocationFull}}" onerror="this.src = 'images/default.png';"
+            title="{{latestReport.title}}" alt="{{latestReport.title}}" />
+    </a>
+</div>
+<div class="report-info title-box">
+    <div class="report-title">
+        <span class="report-text"> {{latestReport.title}} </span>
+        <div class="language">
+            <span>{{latestReport.languageCode}}</span>
+        </div>
+    </div>   
+</div>

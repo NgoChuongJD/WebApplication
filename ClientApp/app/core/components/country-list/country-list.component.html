@@ -1,0 +1,13 @@
+<div class="grid grid-background">
+    <div class="country-container" 
+        [ngClass]="{'col-1-1':isMobileDevice, 'col-1-3':!isDesktopDevice}" 
+        *ngFor="let country of coutries|async">
+        <a class ="country-item" (click) ="navigateToExplore(country.countryCode)">
+            <img class="country-flag" src="{{country.flagLocation}}" />              
+           <div class ="country-name">
+            {{country.countryName}}
+            </div>
+        </a>
+    </div>
+
+</div>

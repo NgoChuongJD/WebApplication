@@ -1,0 +1,7 @@
+<div class="row d-block">
+    <h3 class="title-section">{{sectionTitle | translate}}</h3>
+    <arp-report-list [reportSource]="reportSource"></arp-report-list>
+    <div class="clearfix"></div>
+    <div class="row justify-content-center mb-3 p-bottom" *ngIf="reportSource.length >0">
+        <input type="button" title="See more report from similar company" class="btn-default btn text-capitalize btn-view-more mat-raised-button"
+            (click)="viewMoreReports(reportYear, sectorId);" value="{{btnSeeMore}}" />

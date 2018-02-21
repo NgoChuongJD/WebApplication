@@ -1,0 +1,85 @@
+<ng-container>
+    <div id="top-of-page"></div>
+    <div *ngIf="isFetching" class="progress-bar-container">
+        <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar>
+    </div>
+
+    <!-- <arp-simple-notifications [options]="notificationOptions"></arp-simple-notifications> -->
+    <mat-toolbar *ngIf="!isSmallDevice" class="app-toolbar" role="header">
+        <a class="nav-link home" [routerLink]="['']">{{(isTabletDevice?'app_title_tablet':'app_title_desktop') | translate }}</a>
+        <arp-top-menu (showSuggestBox)="showSuggestBoxHandler($event)"></arp-top-menu>
+        <arp-suggest-box *ngIf="isShowSuggest"></arp-suggest-box>
+        <!-- This fills the remaining space of the current row -->
+        <span class="fill-remaining-space"></span>
+        <div class="account-container">
+            <button mat-button>
+                {{'login' | translate}}
+            </button>
+            <button mat-button>
+                {{'sign_up' | translate}}
+            </button>
+        </div>
+    </mat-toolbar>
+    <mat-toolbar *ngIf="isSmallDevice" class="app-toolbar" role="header" #matToolbarMobile>
+        <mat-toolbar-row>
+            <button *ngIf="isSmallDevice" class="nav-toggle" (click)="sideNav.toggle()" mat-icon-button title="Menu">
+                <i class="material-icons">menu</i>
+            </button>
+            <a class="nav-link home" [routerLink]="['']">{{'app_title_desktop' | translate }}</a>
+            <span class="fill-remaining-space"></span>
+            <div class="row account-container account-panel">
+                <button mat-button class="login">
+                    {{'login' | translate}}
+                </button>
+            </div>
+        </mat-toolbar-row>
+        <mat-toolbar-row [ngClass]="{ 'toggle-search-box': true, 'invisible': hideMobileSearchBox}">
+            <arp-suggest-box></arp-suggest-box>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+
+    <mat-sidenav-container class="sidenav-container" role="main">
+        <mat-sidenav #sideNav class="sidenav" (openedStart)="onSideNavOpenedStart()" (closedStart)="onSideNavClosedStart()">
+            <mat-toolbar class="app-toolbar">
+                <button *ngIf="isSmallDevice" class="nav-toggle" (click)="sideNav.toggle() " mat-icon-button title="Menu">
+                    <i class="material-icons">close</i>
+                </button>
+                <a class="nav-link home" [routerLink]="['']">{{'app_title_desktop' | translate }}</a>
+                <span class="fill-remaining-space"></span>
+                <div class="account-container account-panel">
+                    <button mat-button>
+                        {{'login' | translate}}
+                    </button>
+                    <button mat-button *ngIf="!isSmallDevice">
+                        {{'sign_up' | translate}}
+                    </button>
+                </div>
+            </mat-toolbar>
+            <mat-tab-group>
+                <mat-tab label="{{'country' | translate}}">
+                    <arp-country-list (onItemClicked)="sideNav.toggle()"></arp-country-list>
+                </mat-tab>
+                <mat-tab label="{{'sector' | translate}}">
+                    <arp-sector-list (onItemClicked)="sideNav.toggle()"></arp-sector-list>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <section [ngClass]="{'sidenav-content': true, 'without-search-box': hideMobileSearchBox}" role="content" #mainContent>
+                <router-outlet #o="outlet"></router-outlet>
+            </section>
+
+            <footer>
+                    <arp-footer></arp-footer>
+             </footer>
+
+        </mat-sidenav-content>
+
+       
+    </mat-sidenav-container>
+
+    <div *ngIf="isShowJumpUp" id="jump-up" class="position-fixed rounded-circle" title="Jump to top of page">
+        <i class="fa fa-angle-up" (click)="jumpToTop()"></i>
+    </div>
+</ng-container>

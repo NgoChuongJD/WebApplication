@@ -1,0 +1,117 @@
+
+<label style="padding:20px;font-size: 15pt;">Filter options</label>{{id}}
+<div class="row" style="padding-left: 30px;">
+    <div class="col-md-2" style="background:none;padding-left: 20px;">
+        <div id="byType">
+            <div class="form-group">
+                <span style="padding:20px 0 20px 0px;margin-bottom: 30px;"> by Type</span>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" name="filterOptions" id="rdAnnaulReport" value="report" [(ngModel)]="filterType">
+                        <span>Annual Reports </span>
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div>
+                    <label class="radio-inline custom-radio nowrap">
+                        <input type="radio" name="filterOptions" id="rdReport" value="company" [(ngModel)]="currUrl">
+                        <span>Companies</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div id="searchAutocomplete" *ngIf="filterType =='report'">
+            <div class="form-group">
+                <input id="txtReport" placeholder="Type a company" type="text" class="form-control" />
+            </div>
+           <!-- <pre>Model: {{ model | json}}</pre>-->
+        </div>
+
+        <div id="byLocation">
+            <div class="form-group">
+                <span style="padding:20px 0 20px 0px;margin-bottom: 30px;"> by Location</span>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="exampleSelect1">
+                    <option>Select Market</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="exampleSelect1">
+                    <option>Select Exchange</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="byNature">
+            <div class="form-group">
+                <span style="padding:20px 0 20px 0px;margin-bottom: 30px;"> by Nature</span>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="selectSector">
+                    <option>Select Sector</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="selectIndustry">
+                    <option>Select Industry</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+
+
+        </div>
+
+        <!-- slide show -->
+
+    </div>
+
+    <div class="col-md-10">
+        <div class="row" *ngIf="filterType !=='report'">
+            <div class="btn-group">
+                <label class="btn btn-primary">A</label>
+                <label class="btn btn-primary">B</label>
+                <label class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'Right'">C</label>
+                <label class="btn btn-primary">D</label>
+                <label class="btn btn-primary">E</label>
+                <label class="btn btn-primary">F</label>
+                <label class="btn btn-primary">G</label>
+                <label class="btn btn-primary">H</label>
+                <label class="btn btn-primary">I</label>
+                <label class="btn btn-primary">J</label>
+                <label class="btn btn-primary">K</label>
+                <label class="btn btn-primary">M</label>
+            </div>
+        </div>
+       
+
+        <div>
+
+           
+</div>
+
+
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,26 @@
+﻿<div *ngIf="!dataLoadCompletedState" class="row center d-block p-2">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i>
+    <b class="d-block">Loading...</b>
+</div>
+<div class="row d-block" *ngIf="dataLoadCompletedState && reportSourcePaging.length > 0">
+    <h3 class="title-section d-sm-block d-md-none">
+        <span>{{title | translate}}</span>
+        <a style="color: #00529b;" class="h3" href="" 
+           title="See company {{companyName}}" 
+           [routerLink]="['/company', companyCode, companyNameEncoded]" >
+            {{companyName}}
+        </a>
+    </h3>
+    <h3 class="title-section d-none d-md-block">
+        {{title | translate}} {{companyName}}
+    </h3>
+
+
+    <arp-report-list id="report" [reportSource]="reportSourcePaging" [companyName]="companyName"></arp-report-list>
+    <div class="clearfix"></div>
+    <div class="col-12 justify-content-center mb-3 center p-bottom" *ngIf="hasMore">
+        <input type="button" title="See {{total}} reports from this company."
+               (click)="getMoreReport()"
+               class="btn-default btn text-capitalize btn-view-more mat-raised-button" value="More Report" />
+    </div>
+</div>

@@ -1,0 +1,429 @@
+<div *ngIf="isDesktop" id="filter-side-bar" class="col-12 d-none d-md-block">
+    <h4>Filter options</h4>
+    <div class="field row">
+        <div class="form-group">
+            <div class="col-md-12 search-box-filter">
+                <arp-suggest-box [query]="query"></arp-suggest-box>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">by Type</label>
+            <div class="col-md-12">
+                <div class="radio">
+                    <label for="radio-report" class="">
+                        <input type="radio"
+                               id="radio-report"
+                               class="input-md radio-control"
+                               value="report"
+                               [(ngModel)]="filterModel.exploreType"
+                               checked="checked"
+                               name="exploreType" />
+                        <span>{{lab_reports | translate}}</span>
+                    </label>
+                </div>
+
+                <div class="radio">
+                    <label for="radio-company">
+                        <input type="radio"
+                               id="radio-company"
+                               class="input-md radio-control"
+                               value="company" checked="checked"
+                               [(ngModel)]="filterModel.exploreType"
+                               name="exploreType" />
+                        <span>{{lab_company | translate}}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">by Location</label>
+            <div class="col-md-12">
+                <mat-select [ngClass]="{'select-icon': filterModel.countryCode}"
+                            class="form-control input-md" placeholder="Select Country"
+                            (click)="setPostionOverlay()"
+                            [(ngModel)]="filterModel.countryCode"
+                            name="countryCode" ngDefaultControl>
+                    <mat-option *ngFor="let location of locations"
+                                [value]="location.countryCode">
+                        <img alt="flag" src="{{ location.flagLocation }}" class="img-fluid" />
+                        {{ location.countryName }}
+                    </mat-option>
+                </mat-select>
+                <span class="select-icon"
+                      (click)="locationReset()"
+                      [ngClass]="{'close': filterModel.countryCode}">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">by Listing</label>
+
+            <div class="col-md-12">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openListingBoxMode">
+                        <ul class="chosen-results">
+                            <li class="sector-item active-result sector-select-multi" 
+                                title="{{exchange.countryCode}} - {{exchange.marketID}}"
+                                *ngFor="let exchange of exchangesDisplay">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeExchange($event.checked, exchange.marketID)"
+                                              [checked]="exchange.checked"
+                                              [value]="exchange.marketID">
+                                    {{ exchange.marketName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="chosen-choices">
+                        <template class="d-block" *ngFor="let exchange of exchangesDisplay">
+                            <li class="sector-display" *ngIf="exchange.checked">
+                                <div class="sector-text">{{exchange.marketName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="changeExchange(false, exchange.marketID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+                        
+                        <li class="sector-search-field" (click)="openExchangeBox()">
+                            <input type="text" class="chosen-search-input sectorId  sector-select-multi"
+                                   placeholder="Select Exchange"
+                                   matInput
+                                   readonly="readonly"
+                                   id="exchangeId"
+                                   (focus)="openExchangeBox()"/>
+                            <div class="mat-select-arrow-wrapper sector-arrow sector-select-multi"
+                                 (click)="openExchangeBox()"  
+                                 *ngIf="filterModel.exchangeId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">{{lab_nature | translate}}</label>
+
+            <div class="col-md-12">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openSectorBoxMode">
+                        <ul class="chosen-results">
+                            <li class="sector-item active-result sector-select-multi" *ngFor="let sector of sectors">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeSector($event.checked, sector.sectorID)"
+                                              [checked]="filterModel.sectorId.includes(sector.sectorID)"
+                                              [value]="sector.sectorID">
+                                    {{ sector.sectorName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="chosen-choices">
+                        <template *ngFor="let sector of sectors" class="d-block">
+                            <li class="sector-display" *ngIf="sector.checked">
+                                <div class="sector-text">{{sector.sectorName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="removeSector(sector.sectorID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+                        <li class="sector-search-field" *ngIf="filterModel.sectorId.length < 3">
+                            <input type="text" class="chosen-search-input sector-select-multi sectorId"
+                                   matInput
+                                   [placeholder]="placeholder"
+                                   readonly="readonly"
+                                   id="sectorId"
+                                   (focus)="openSectorBox()"/>
+
+                            <div class="mat-select-arrow-wrapper sector-arrow"
+                                 *ngIf="filterModel.sectorId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi" (click)="openSectorBox()"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openIndustryBoxMode">
+                        <ul class="chosen-results">
+                            <li *ngFor="let industry of industriesDisplay" class="sector-item active-result sector-select-multi" title="{{industry.industryName}}">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeIndustry($event.checked, industry.industryID)"
+                                              [checked]="industry.checked"
+                                              [value]="industry.industryID">
+                                    {{ industry.industryName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="chosen-choices">
+                        <template class="d-block" *ngFor="let industry of industriesDisplay">
+                            <li class="sector-display" *ngIf="industry.checked">
+                                <div class="sector-text">{{industry.industryName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="changeIndustry(false, industry.industryID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+
+                        <li class="sector-search-field" (click)="openIndustryBox()">
+                            <input type="text" class="chosen-search-input sectorId  sector-select-multi"
+                                   placeholder="Select Industry"
+                                   matInput
+                                   readonly="readonly"
+                                   id="industryId"
+                                   (focus)="openIndustryBox()" />
+                            <div class="mat-select-arrow-wrapper sector-arrow sector-select-multi"
+                                 (click)="openIndustryBox()"
+                                 *ngIf="filterModel.industryId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <div class="year-filter-list">
+                    <label class="year-filter-item" *ngFor="let year of yearsFilter">
+                        <input type="checkbox" name="Years" value="{{ year }}"
+                               (change)="changeYear($event, year)" [checked]="filterModel.years.includes(year)">
+                        <span>{{ year }}</span>
+                    </label>
+                    <span (click)="addYearFilters()" class="fa fa-plus" title="More" *ngIf="!isEndYear"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile-->
+<div *ngIf="!isDesktop" id="mobile-filter" class="col-sm-12 d-block d-md-none filter-box" [ngClass]="{'hidden': filterOpen}">
+    <h4>Filter options</h4>
+    <p>Let's narrow it down a little.</p>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">by Location</label>
+
+            <div class="col-md-12">
+                <mat-select [ngClass]="{'select-icon': filterModel.countryCode}"
+                            class="form-control input-md"
+                            placeholder="Select Country"
+                            [(ngModel)]="filterModel.countryCode"
+                            name="countryCode" ngDefaultControl>
+                    <mat-option *ngFor="let location of locations" [value]="location.countryCode">
+                        <img alt="fl" src="{{ location.flagLocation }}" class="img-fluid" />
+                        {{ location.countryName }}
+                    </mat-option>
+                </mat-select>
+                <span class="select-icon"
+                      (click)="locationReset()"
+                      [ngClass]="{'close': filterModel.countryCode}">
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">by Listing</label>
+
+            <div class="col-md-12">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openListingBoxMode">
+                        <ul class="chosen-results">
+                            <li class="sector-item active-result sector-select-multi"
+                                title="{{exchange.countryCode}} - {{exchange.marketID}}"
+                                *ngFor="let exchange of exchangesDisplay">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeExchange($event.checked, exchange.marketID)"
+                                              [checked]="exchange.checked"
+                                              [value]="exchange.marketID">
+                                    {{ exchange.marketName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="chosen-choices">
+                        <template class="d-block" *ngFor="let exchange of exchangesDisplay">
+                            <li class="sector-display" *ngIf="exchange.checked">
+                                <div class="sector-text">{{exchange.marketName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="changeExchange(false, exchange.marketID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+
+                        <li class="sector-search-field" (click)="openExchangeBox()">
+                            <input type="text" class="chosen-search-input sectorId  sector-select-multi"
+                                   placeholder="Select Exchange"
+                                   matInput
+                                   readonly="readonly"
+                                   id="exchangeId"
+                                   (focus)="openExchangeBox()" />
+                            <div class="mat-select-arrow-wrapper sector-arrow sector-select-multi"
+                                 (click)="openExchangeBox()"
+                                 *ngIf="filterModel.exchangeId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">{{lab_nature | translate}}</label>
+
+            <div class="col-md-12">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openSectorBoxMode">
+                        <ul class="chosen-results">
+                            <li class="sector-item active-result sector-select-multi" *ngFor="let sector of sectors">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeSector($event.checked, sector.sectorID)"
+                                              [checked]="filterModel.sectorId.includes(sector.sectorID)"
+                                              [value]="sector.sectorID">
+                                    {{ sector.sectorName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="chosen-choices">
+                        <template *ngFor="let sector of sectors" class="d-block">
+                            <li class="sector-display" *ngIf="sector.checked">
+                                <div class="sector-text">{{sector.sectorName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="removeSector(sector.sectorID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+                        <li class="sector-search-field" *ngIf="filterModel.sectorId.length < 3">
+                            <input type="text" class="chosen-search-input sector-select-multi sectorId"
+                                   matInput
+                                   [placeholder]="placeholder"
+                                   readonly="readonly"
+                                   id="sectorId"
+                                   (focus)="openSectorBox()" />
+
+                            <div class="mat-select-arrow-wrapper sector-arrow"
+                                 *ngIf="filterModel.sectorId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi" (click)="openSectorBox()"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-12  pt-1">
+                <div class="sector-group form-control">
+                    <div class="sector-select chosen-drop" *ngIf="openIndustryBoxMode">
+                        <ul class="chosen-results">
+                            <li *ngFor="let industry of industriesDisplay" class="sector-item active-result sector-select-multi" title="{{industry.industryName}}">
+                                <mat-checkbox class="sector-select-multi"
+                                              (change)="changeIndustry($event.checked, industry.industryID)"
+                                              [checked]="industry.checked"
+                                              [value]="industry.industryID">
+                                    {{ industry.industryName }}
+                                </mat-checkbox>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="chosen-choices">
+                        <template class="d-block" *ngFor="let industry of industriesDisplay">
+                            <li class="sector-display" *ngIf="industry.checked">
+                                <div class="sector-text">{{industry.industryName}}</div>
+                                <a class="sector-choice-close fa fa-times"
+                                   (click)="changeIndustry(false, industry.industryID)"
+                                   title="Remove this"></a>
+                            </li>
+                        </template>
+
+                        <li class="sector-search-field" (click)="openIndustryBox()">
+                            <input type="text" class="chosen-search-input sectorId  sector-select-multi"
+                                   placeholder="Select Industry"
+                                   matInput
+                                   readonly="readonly"
+                                   id="industryId"
+                                   (focus)="openIndustryBox()" />
+                            <div class="mat-select-arrow-wrapper sector-arrow sector-select-multi"
+                                 (click)="openIndustryBox()"
+                                 *ngIf="filterModel.industryId.length <= 0">
+                                <div class="mat-select-arrow sector-select-multi"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">Report Year</label>
+            <div class="col-md-12">
+                <div class="year-filter-list">
+                    <label class="year-filter-item" *ngFor="let year of yearsFilter">
+                        <input type="checkbox" name="Years" value="{{ year }}"
+                               (change)="changeYear($event, year)"
+                               [checked]="filterModel.years.includes(year)">
+                        <span>{{ year }}</span>
+                    </label>
+                    <span (click)="addYearFilters()" class="fa fa-plus" title="More" *ngIf="!isEndYear"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="field row">
+        <div class="form-group">
+            <label class="col-md-12 control-label pl-2">Sort by</label>
+
+            <div class="col-md-12">
+                <mat-select style="width: 90%;" class="form-control input-md"
+                            placeholder="Select sort field"
+                            [(ngModel)]="filterModel.exchangeId"
+                            name="exchangeId" ngDefaultControl>
+                    <mat-option *ngFor="let exchange of exchangesDisplay" [value]="exchange.Id">
+                        {{ exchange.ExchangeName }}
+                    </mat-option>
+                </mat-select>
+                <span class="sort-icon fa" (click)="sortOrderChange()"
+                      [ngClass]="{'fa-sort-amount-desc': !sortOrder,
+                          'fa-sort-amount-asc': sortOrder}">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!isDesktop" class="d-block d-md-none" id="filter-button" (click)="toggleMobileMenu()">
+    <span *ngIf="filterOpen; then open; else close"></span>
+    <ng-template #open><span>Filter</span></ng-template>
+    <ng-template #close><span>Close</span></ng-template>
+</div>

@@ -1,0 +1,26 @@
+<div class="container company-report">
+    <div class="report-list d-table">
+        <div class="message-info" *ngIf="reportSource.length <=0">{{messageAlert| translate}}</div>
+
+        <div class="report-card d-inline-block" *ngFor="let report of reportSource">
+            <div class="report-image">             
+                <a href="" class="report_detail_url" 
+                   [routerLink]="['/report', report.companyNameEncoded, report.id, report.titleEncoded]">
+                    <img class="img-portrait img-thumbnail img-report" src="{{report.thumbnailFileLocationFull}}" onerror="this.src = 'images/default.png';"
+                        title="{{report.companyName}} - {{report.title}}" alt="{{report.title}}" />
+                </a>
+            </div>
+            <div class="report-info" [ngClass]="{'report-company-title': !companyName && report.companyName}">
+                <div class="report-title" title="{{report.id}} - {{report.title}}">
+                    <span class="report-text"> {{report.title}} </span>
+                    <div class="language">
+                        <span>{{report.languageCode}}</span>
+                    </div>
+                </div>
+                <a *ngIf="!companyName && report.companyName" [routerLink]="['/company', report.companyCode, report.companyNameEncoded]">
+                    <span class="company-name">{{report.companyName}}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

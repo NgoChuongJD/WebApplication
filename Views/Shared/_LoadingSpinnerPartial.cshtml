@@ -1,0 +1,28 @@
+﻿<style>
+    appc-root {
+        display: flex !important;
+        flex-direction: column;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    h3 {
+        color: #aaa;
+        font-size: 2.827em;
+        font-weight: normal;
+        padding: 1em 1em 3em;
+        text-align: center;
+    }
+    
+    .loader {
+        background: url('@Url.Content("~/img/preloader/Preloader_3_64x64.gif")') center no-repeat;
+        width: 64px;
+        height: 64px;
+        display: inline-block;
+    }
+</style>
+
+<h3>
+    <div class="loader"></div>
+    <p trans-for="loading">Loadding...</p>
+</h3>

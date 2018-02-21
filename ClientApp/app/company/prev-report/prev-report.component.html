@@ -1,0 +1,20 @@
+﻿<div *ngIf="!dataLoadCompletedState" class="row center d-block p-2">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i> 
+    <b class="d-block">Loading...</b>
+</div>
+
+<div *ngIf="dataLoadCompletedState && reportSourcePaging.length > 0" class="row d-block">
+    <h2 title="{{ this.total }} reports more." class="previous-report-header"><span class="total">{{this.total}} </span>{{ PREVIOUS_REPORT_HEADER | translate }}</h2>
+    <arp-report-list *ngIf="reportSourcePaging.length > 0"
+                     [reportSource]="reportSourcePaging"
+                     [companyName]="companyName">
+    </arp-report-list>
+    <div class="clearfix"></div>
+    <div class="col-12 justify-content-center mb-3 center p-bottom" *ngIf="hasMore">
+        <input type="button" 
+               id="btnSeeMoreReport"
+               title="See more in {{ total }} reports from this company."
+               (click)="getMoreReport()"
+               class="btn-default btn text-capitalize btn-view-more mat-raised-button" value="View more" />
+    </div>
+</div>

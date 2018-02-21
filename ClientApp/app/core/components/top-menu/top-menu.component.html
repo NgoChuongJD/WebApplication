@@ -1,0 +1,26 @@
+<button mat-button 
+    class="button-menu" 
+    *ngIf="isShown" 
+    [panelupTriggerFor]="countryPanelup"
+    (onOpened)="onOpenedMenu('country')" 
+    (onClosed)="onClosedMenu('country')">
+    {{'country' | translate}}
+    <i class="material-icons" [ngClass]="{'expand': !isCountryMenuHidden}">expand_more</i>
+</button>
+<button
+    class="button-menu"
+    *ngIf="isShown"
+    mat-button 
+    [panelupTriggerFor]="sectorPanelup" 
+    (onOpened)="onOpenedMenu('sector')" 
+    (onClosed)="onClosedMenu('sector')">
+    {{'sector' | translate}}
+    <i class="material-icons" [ngClass]="{'expand': !isSectorMenuHidden}">expand_more</i>
+</button>
+
+<panelup #sectorPanelup="panelup" positionY="below" class="panelup-header panelup-sector">
+    <arp-sector-list></arp-sector-list>
+</panelup>
+<panelup #countryPanelup="panelup" positionY="below" class="panelup-header panelup-country">
+    <arp-country-list></arp-country-list>
+</panelup>

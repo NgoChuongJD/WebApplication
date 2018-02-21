@@ -1,0 +1,40 @@
+<ng-container *ngIf="!isNotFound else notFound">
+    <div class="report-view" #fullscreenElem>
+        <!-- <input #report (change)="setData(report.value)" /> -->
+        <div class="report-pdf">
+            <div #wowbookContainer></div>
+        </div>
+        <div class="pdf-controls" #pdfControl>
+            <div class="controls-row">
+                <button mat-icon-button>
+                    <i class="material-icons">bookmark</i>
+                </button>
+                <button mat-icon-button>
+                    <i class="material-icons">view_carousel</i>
+                </button>
+                <button mat-icon-button>
+                    <i class="material-icons">search</i>
+                </button>
+                <button mat-icon-button (click)="zoomIn($event)">
+                    <i class="material-icons">zoom_in</i>
+                </button>
+                <button mat-icon-button (click)="zoomOut($event)">
+                    <i class="material-icons">zoom_out</i>
+                </button>
+                <button mat-icon-button (click)="toogleFullScreen($event)">
+                    <i class="material-icons">fullscreen</i>
+                </button>
+                <button mat-icon-button (click)="prev($event)">
+                    <i class="material-icons">arrow_back</i>
+                </button>
+                <span>1/100</span>
+                <button mat-icon-button (click)="next($event)">
+                    <i class="material-icons">arrow_forward</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #notFound>
+    <h1>Not found report.</h1>
+</ng-template>

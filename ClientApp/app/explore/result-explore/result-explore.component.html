@@ -1,0 +1,11 @@
+﻿<div id="explore-result" class="col-sm-12 col-md-8 col-xl-10">
+    Explore
+    <div class="col-sm-12">companyName: {{filterModel.companyName}}</div>
+    <div class="col-sm-12">Type: {{filterModel.exploreType}}</div>
+    <div class="col-sm-12">countryCode: {{filterModel.countryCode}}</div>
+    <div class="col-sm-12">exchangeId: {{filterModel.exchangeId.join(', ')}}</div>
+    <div class="col-sm-12" *ngIf="filterModel.sectorId">Sector: {{filterModel.sectorId.join(', ')}}</div>
+    <div class="col-sm-12">Industry: {{filterModel.industryId.join(', ')}}</div>
+    <div class="col-sm-12" *ngIf="filterModel.years.length > 0">years: {{filterModel.years.join(', ')}}</div>
+    <div class="col-sm-12" *ngIf="filterModel.years.length <= 0">years: All</div>
+</div>

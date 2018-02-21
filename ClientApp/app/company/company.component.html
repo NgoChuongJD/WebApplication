@@ -1,0 +1,66 @@
+<div *ngIf="!isLoadDataCompleted" class="row center d-block p-2">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i>
+    <b class="d-block">Loading...</b>
+</div>
+
+
+<div *ngIf="isLoadDataCompleted" id="header" class="row company-header-section">
+    <div class="company-banner">
+        <div class="banner-image">
+            <div class="subcribed-section">               
+                    <h4 class="company-desktop">
+                        {{companyProfile.companyName}}
+                    </h4>               
+                <div *ngIf="subcribed; then unsubcribe; else subcribe"></div>
+                <ng-template #unsubcribe>
+                    <button class="btn btn-subcribe unsubcribe">
+                        Unsubscribe
+                    </button>
+                </ng-template>
+
+                <ng-template #subcribe>
+                    <button title="{{SUBCRIBE_TOOLTIP | translate}}" class="btn btn-subcribe">
+                        <i class="fa fa-feed align-feed"></i>
+                        <span class="label-subscrible">Subscribe</span>
+                    </button>
+                </ng-template>
+            </div>
+        </div>
+        <div class="banner-image-bg" [style.background-image]="'url(' + companyProfile.bannerLocation + ')'">
+
+        </div>
+    </div>
+
+    <div class="company-inforation row">
+        <div class="infor-box">
+            <div class="logo-section">
+                <a  href="javscript:void();"  [routerLink] ="['/company', companyProfile.companyCode, companyProfile.companyNameEncoded]" title="Go to company profile">
+                    <div class="logo-box" [style.background-image]="'url(' + companyProfile.logoLocation + ')'"></div>
+                </a>
+            </div>
+            <h4 class="company-mobile d-sm-block d-xl-none">
+                {{companyProfile.companyName}}
+            </h4>
+            <arp-company-market-tab [companyProfile]="companyProfile" [marketData]="marketData">
+            </arp-company-market-tab>
+            <div class="external-link">
+                <a class="d-sm-block" href="{{companyProfile.companyIRURL}}" target="_blank" title="Go to company website">
+                    <i class="fa fa-external-link"></i>
+                    <span>{{visit_IR_page | translate}}</span>
+                </a>
+            </div>
+
+        </div>
+        <arp-company-latest-report class="latest-report-card center" *ngIf="isLoadDataCompleted && latestReport" [latestReport]="latestReport"
+            [company]="companyProfile"></arp-company-latest-report>
+    </div>
+
+</div>
+<div class="clearfix"></div>
+<div class="row" #report id="report" *ngIf="isLoadDataCompleted">
+    <arp-company-prev-report *ngIf="isShowPrevReport" [companyName]="companyProfile.companyName" class="company-report-section">
+    </arp-company-prev-report>
+</div>
+
+<div class="clearfix"></div>
+<similar-company *ngIf="isLoadDataCompleted" [companyCode]="companyCode"></similar-company>

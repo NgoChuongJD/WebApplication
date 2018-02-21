@@ -1,0 +1,34 @@
+<div class="grid grid-background" *ngIf="isDesktopDevice">
+    <div class="col-1-3">
+        <div class="sector-row">
+            <a *ngFor="let sector of firstColumnSectors" class="panelup-item" (click)="navigateToExplore(sector.sectorID)">
+                <div class="sector-item">{{sector.sectorName}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="col-1-3">
+        <div class="sector-row">
+            <a *ngFor="let sector of secondColumnSectors" class="panelup-item" (click)="navigateToExplore(sector.sectorID)">
+                <div class="sector-item">{{sector.sectorName}}</div>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-1-3">
+        <div class="sector-row">
+            <a *ngFor="let sector of thirdColumnSectors" class="panelup-item" (click)="navigateToExplore(sector.sectorID)">
+                <div class="sector-item">{{sector.sectorName}}</div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="grid grid-background" *ngIf="!isDesktopDevice">
+    <div class="col-1-1" *ngFor="let sector of sectors">
+        <a class="panelup-item" (click)="navigateToExplore(sector.sectorID)">
+            <div class="sector-item-mobile">{{sector.sectorName}}</div>
+        </a>
+    </div>
+</div>

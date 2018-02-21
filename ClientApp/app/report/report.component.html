@@ -1,0 +1,54 @@
+
+<arp-pdf-viewer *ngIf="dataLoadCompletedState" [reportData]="reportData" [pdfFilePath]="reportData.fileLocationFull"></arp-pdf-viewer>
+<!-- <div class="pdf-reader-wrapper">
+    <arp-pdf-reader 
+        *ngIf="dataLoadCompletedState" 
+        [reportData]="reportData" 
+        [pdfUrl]="reportData.fileLocationFull"
+        [width]="600"
+        [height]="500">
+    </arp-pdf-reader>
+</div> -->
+<div class="clearfix"></div>
+<!-- <arp-report-options [pdfFilePath]="reportData.fileLocationFull" 
+                    [logo]="reportData.logoLocation" 
+                    [title]="reportData.title" 
+                    [languageCode]="reportData.languageCode"
+                    [companyName]="reportData.companyName" 
+                    [companyCode]="reportData.companyCode"
+    class="col-sm-12 arp-report-options p-0">
+</arp-report-options> -->
+
+<div class="d-sm-block info-box" *ngIf="dataLoadCompletedState">
+    <div class="company-logo">
+        <a href="javascript:void(0)" title="See company {{reportData.companyName}}"
+           (click)="goCompanyProfile()">
+            <img src="{{reportData.logoLocation}}" class="img-landscape img-thumbnail img-fluid" alt="logo" />
+        </a>
+    </div>
+    <!-- Title -->
+    <div class="title-box">
+        <div class="report-info">
+            <div class="row title">{{reportData.title}}</div>
+            <div class="row company-name">
+                <a href="javascript:void(0)" title="See company {{reportData.companyName}}"
+                   (click)="goCompanyProfile()">
+                    {{reportData.companyName}}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<arp-owner-company-report *ngIf="dataLoadCompletedState" 
+                          [reportSource]="companyReport"
+                          [pageSize]="topRecommended"
+                          [companyName]="reportData.companyName" 
+                          [companyCode]="reportData.companyCode" 
+                          class="company-report-section">
+</arp-owner-company-report>
+<div class="clearfix"></div>
+<arp-similar-company-report *ngIf="dataLoadCompletedState" [reportSource]="similarReport" [sectorId]="reportData.sectorId"
+    [reportYear]="reportYear" class="company-report-section similar-company-report">
+</arp-similar-company-report>

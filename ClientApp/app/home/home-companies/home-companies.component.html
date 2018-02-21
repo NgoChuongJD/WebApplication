@@ -1,0 +1,52 @@
+﻿<div class="home-company" *ngIf="loaded">
+    <div class="home-company-tittle">{{companies_title | translate}}</div>
+    <div class="home-company-description">{{companies_description | translate}}</div>
+    <div class="home-company-content row position-relative" [ngClass]="isDevice()">
+        <div class="home-company-groups mx-auto">
+            <div class="home-company-cards" *ngFor="let group of groups; let _index=index" [ngClass]="showGroup(_index)">
+                <div *ngFor="let company of group" 
+                     class="home-company-card">
+                    <a href="" class="home-company-card-link" 
+                       (swipeleft)="swipe($event.type)"  
+                       (swiperight)="swipe($event.type)" 
+                       [routerLink]="['/company', company.companyCode, company.companyNameEncoded]">
+                        <div class="home-company-icon" [style.background-image]="'url(' + company.logoLocation+ ')'">
+                        </div>
+                        <div class="homeCompanyText">
+                            <div class="home-company-card-name">
+                                {{company.companyName | translate}}
+                            </div>
+                            <div class="home-company-card-count">
+                                {{company.totalReports}} reports
+                            </div>
+                            <div class="home-company-card-sector">
+                                {{company.sectorName | translate}}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="home-company-control event-none">
+                <div class="home-company-next event-auto homeCompanyNext cursor-pointer">
+                    <div class="home-company-next-item homeCompanyNextItem" [ngClass]="hideControl('next')" (click)="clickNext()">
+                        <div class="home-company-svg" [style.background-image]="'url(' + arrowImgSrc + ')'">
+                            <!-- <img [attr.src]="arrowImgSrc" alt="" /> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="home-company-prev event-auto homeCompanyPrev cursor-pointer">
+                    <div class="home-company-prev-item homeCompanyPrevItem" [ngClass]="hideControl('prev')" (click)="clickPrev()">
+                        <div class="home-company-svg" [style.background-image]="'url(' + arrowImgSrc + ')'">
+                            <!-- <img [attr.src]="arrowImgSrc" alt="" /> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home-company-description" style="margin-top: 0px;">
+        <button (click)="navigateToExplorePage()" mat-raised-button class="btn-more-companies">
+            More companies
+        </button>
+    </div>
+</div>

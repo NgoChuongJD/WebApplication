@@ -1,0 +1,98 @@
+﻿<div class="market-info-section">
+    <div *ngIf="marketData && marketData.length > 0" class="tab-market">
+        <div (click)="changeSelectedMarket(market.symbol, true)"
+             [ngClass]="{'selected': market.selected}"
+             class="tab-item" *ngFor="let market of marketData" title="{{market.marketName}}">
+            <div class="tab-item-inner">
+                <div class="market-title d-block">
+                    {{market.symbol}}
+                </div>
+                <div class="price-section d-block">
+                    <div class="price d-inline-block">{{market.lastPrice | number: '1.2-2' }}</div>
+                    <div class="currencyCode d-inline-block">{{market.currencyCode}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Mobile, Tablet-->
+    <div *ngIf="marketData && marketData.length > 0" class="tab-market small-device">
+        <div (click)="changeSelectedMarket(market.symbol)"
+             [ngClass]="{'selected': market.selected}"
+             title="{{market.symbol}}"
+             class="tab-item" *ngFor="let market of marketData">
+            <div class="tab-item-inner">
+                <div class="market-title d-block">
+                    {{market.symbol}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content d-table">
+        <div class="price-section d-sm-block d-xl-none" *ngIf="selectedMarket">
+            <div class="price d-inline-block">{{selectedMarket.lastPrice | number: '1.2-2' }}</div>
+            <div class="currencyCode d-inline-block">{{selectedMarket.currencyCode}}</div>
+        </div>
+
+        <div class="cap row" *ngIf="selectedMarket">
+            <div class="item-cap d-flex align-items-center">
+                <div class="change-arrow">
+                    <span class="fa fa-3x"
+                          [ngClass]="{'fa-caret-down cap-down': selectedMarket.change52W <= 0, 'cap-up fa-caret-up': selectedMarket.change52W > 0}">
+                    </span>
+                </div>
+                <div class="change-count">
+                    <span *ngIf="selectedMarket.change52W >= 0">+{{selectedMarket.change52W | number: '1.2-2'}}</span>
+                    <span *ngIf="selectedMarket.change52W < 0">{{selectedMarket.change52W | number: '1.2-2'}}</span>
+                    <span>({{selectedMarket.percentChange52W | number: '1.2-2'}}%)</span>
+                </div>
+            </div>
+            <div class="cap-description d-flex align-items-center">
+                <span>
+                    {{ CAP_DESCRIPTION_TEXT | translate}}
+                </span>
+            </div>
+        </div>
+        <div class="company-infor row">
+            <label class="item-name">
+                {{SECTOR_LABEL | translate}}
+            </label>
+            <div class="infor">
+                {{companyProfile.sectorName}}
+            </div>
+        </div>
+        <div class="company-infor row">
+            <label class="item-name">
+                {{INDUSTRY_LABEL | translate}}
+            </label>
+            <div class="infor">
+                {{companyProfile.industryName}}
+            </div>
+        </div>
+        <div class="company-infor row">
+            <label class="item-name">
+                {{COUNTRY_LABEL | translate}}
+            </label>
+            <div class="infor">
+                {{companyProfile.countryName}}
+            </div>
+        </div>
+        <div class="company-infor row" *ngIf="selectedMarket">
+            <label class="item-name">
+                {{EXCHANGE_LABEL | translate}}
+            </label>
+            <div class="infor">
+                {{selectedMarket.marketName}}
+            </div>
+        </div>
+        <div class="company-infor row" *ngIf="selectedMarket">
+            <label class="item-name">
+                {{SEGMENT_LABEL | translate}}
+            </label>
+            <div class="infor">
+                {{selectedMarket.segmentName}}
+            </div>
+        </div>
+    </div>
+</div>

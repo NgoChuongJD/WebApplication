@@ -1,0 +1,279 @@
+﻿$main-color-selected: #333;
+$second-color: grey;
+
+arp-company-market-tab {
+    font-family: Roboto;
+
+    .market-info-section {
+        max-width: 100vw;
+        min-width: 320px;
+        padding: 15px;
+    }
+
+    .tab-market {
+        display: block;
+        
+        .tab-item.selected {
+            width: 200px;
+            color: $main-color-selected;
+            cursor: default;
+        }
+
+        .tab-item-inner {
+            height: 100%;
+            margin: 0 1px;
+        }
+
+        .tab-item:not(:first-child) .tab-item-inner {
+            padding: 0 10px;
+        }
+
+        .tab-item:not(:last-child) .tab-item-inner {
+            border-right: 1px solid $second-color;
+        }
+
+        .tab-item {
+            width: 100px;
+            height: 90px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 15px;
+            color: $second-color;
+            position: relative;
+
+            .market-title {
+                text-align: left;
+                display: block;
+                font-size: 14px;
+                line-height: 30px;
+            }
+
+            .price-section {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                font-size: 0; // remove white space
+                .price {
+                    font-size: 18px;
+                    line-height: 50px;
+                }
+
+                .currencyCode {
+                    font-size: 10px;
+                    line-height: 20px;
+                    padding-left: 1px;
+                }
+            }
+        }
+
+        .tab-item.selected {
+            .market-title, .price-section {
+                color: $main-color-selected;
+            }
+
+            .price-section {
+                bottom: 5px;
+
+                .price {
+                    font-size: 34px;
+                }
+
+                .currencyCode {
+                    font-size: 18px;
+                    padding-left: 9px;
+                }
+            }
+        }
+
+        .tab-item:hover:not(.selected) {
+            color: white;
+            cursor: pointer;
+            background-color: $primary-color;
+        }
+    }
+
+    .tab-content {
+        width: 100%;
+        padding: 15px 0;
+
+        .cap {
+            padding: 2px 0;
+
+            .item-cap {
+                padding: 0;
+                width: 30%;
+
+                .change-arrow {
+                    align-self: center;
+
+                    .fa {
+                        transform: scaleY(1.5);
+                    }
+
+                    .cap-down {
+                        color: red;
+                    }
+
+                    .cap-up {
+                        color: #28a745;
+                    }
+                }
+
+                .change-count {
+                    font-size: 0.8em;
+                    align-self: center;
+
+                    span {
+                        padding-left: 5px;
+                        display: block;
+                    }
+                }
+            }
+
+            .cap-description {
+                width: 70%;
+                padding: 0 15px;
+                font-size: 11px;
+                position: relative;
+            }
+        }
+
+        .company-infor {
+            padding: 2px 0;
+            font-size: 14px;
+
+            .item-name, .infor {
+                display: inline-block;
+                vertical-align: middle;
+                line-height: 30px;
+                margin: 0;
+            }
+
+
+            .item-name {
+                padding: 0;
+                width: 30%;
+                color: $second-color;
+            }
+
+            .infor {
+                padding: 0 15px;
+                width: 70%;
+                color: $main-color-selected;
+            }
+        }
+    }
+}
+
+.desktop {
+    arp-company-market-tab {
+        .market-info-section {
+            min-width: 430px;
+
+            .tab-market {
+                display: block !important;
+            }
+
+            .tab-market.small-device {
+                display: none !important;
+            }
+        }
+
+        .tab-item:not(:first-child) .tab-item-inner {
+            padding: 0 15px;
+        }
+    }
+}
+
+.tablet {   
+    &.landscape {
+        arp-company-market-tab {
+            .market-info-section {
+                .price-section {
+                    .price {
+                        font-size: 28px;
+                        line-height: 50px;
+                    }
+    
+                    .currencyCode {
+                        font-size: 18px;
+                        line-height: 22px;
+                        padding-left: 1px;
+                    }
+                }
+    
+                .company-infor {
+                    font-size: 14px;
+                }
+            }
+        }
+  }
+
+  
+}
+
+.tablet, .mobile {
+    arp-company-market-tab {
+        clear: both;
+        width: 100%;
+        display: block;
+
+        .market-info-section {
+            display: block;
+            width: 100%;
+
+            .tab-market {
+                display: none !important;
+            }
+
+            .tab-market.small-device {
+                display: block !important;
+            }
+
+            .price-section {
+                .price {
+                    font-size: 28px;
+                    line-height: 50px;
+                }
+
+                .currencyCode {
+                    font-size: 18px;
+                    line-height: 22px;
+                    padding-left: 1px;
+                }
+            }
+
+            .company-infor {
+                font-size: 14px;
+            }
+        }
+
+        .tab-item {
+            width: 90px;
+            height: 35px;
+            padding: 0;
+
+            .tab-item-inner {
+                margin: 0;
+                border: none;
+                padding: 0 10px;
+            }
+
+            .market-title {
+                line-height: 35px;
+            }
+        }
+
+        .tab-item.selected {
+            width: 90px;
+            color: white;
+            background-color: $primary-color;
+
+            .market-title, .price-section {
+                color: white;
+            }
+        }
+    }
+}

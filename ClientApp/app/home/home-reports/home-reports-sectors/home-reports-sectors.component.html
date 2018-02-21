@@ -1,0 +1,16 @@
+﻿<ul class="justify-content-center nav">
+    <li class="nav-item">
+        <a class="nav-link pt-0 pb-0 pl-2 pr-2">All</a>
+    </li> |
+    <li *ngFor="let item of features" class="nav-item">
+        <a class="nav-link pt-0 pb-0 pl-2 pr-2">{{item.sector_name}}</a>
+    </li> |
+    <li ngbDropdown class="nav-item">
+        <div ngbDropdown placement="bottom-right" class="d-inline-block">
+            <div class="nav-link pt-0 pb-0 pl-2 pr-2" id="dropdownBasic2" ngbDropdownToggle>Menu</div>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
+                <a *ngFor="let item of items" class="dropdown-item">{{item.sector_name}}</a>
+            </div>
+        </div>
+    </li>
+</ul>
